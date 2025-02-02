@@ -1,0 +1,18 @@
+# render.yaml
+services:
+  - type: web
+    name: vj-bot-web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn web_server:app --worker-class gevent
+    envVars:
+      - key: BOT_TOKEN
+        value: your_bot_token
+      - key: API_ID
+        value: your_api_id
+      - key: API_HASH
+        value: your_api_hash
+      - key: ADMINS
+        value: "12345,67890"
+      - key: DB_URI
+        value: mongodb+srv://user:pass@cluster.mongodb.net/db
